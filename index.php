@@ -3,47 +3,62 @@ require 'vendor/autoload.php';
 
 use Cousin\Composer\test;
 
-/*$array = [
-    1,
-    new Test(),
-    "HelloWorld",
-];
-
-dump($array);
-
-echo "<pre>";
-var_dump([
-    1,
-    new Test(),
-    "HelloWorld",
-]);
-echo "</pre>";*/
-
 require "Personnage.php";
 
-$kingArthur = new Personnage("kingArthur");
-$kingArthur->regenerer(10);
-$kingArthur->nom = "Roi Arthur";
+$kingArthur = new Personnage("kingArthur", 200, 15, 20, true);
+$kingArthur->regenerer();
+dump($kingArthur);
 
-$minion = new BadPerso("Minion");
+$minion = new Personnage("Minion", 10, 10, 0);
+dump($minion);
 
+$lieutenant = new Personnage("Lieutenant", 30, 30, 0);
+dump($lieutenant);
+
+$chef = new Personnage("chef", 100, 100, 0);
+dump($chef);
 
 $kingArthur->attaque($minion);
-if($minion->mort()){
-    echo ("Le Minion est KO!");
-} else {
-    echo ("Le Minion a survécu avec . $minion->vieBad");
-}
-
-
 $minion->attaque($kingArthur);
-if($kingArthur->mort()){
-    echo ("Le Roi Arthur est KO!");
-} else {
-    echo ("Le Roi Arthur a survécu avec . $kingArthur->vie");
-}
+dump($kingArthur->mort(), $minion->mort());
 
-var_dump($kingArthur->mort());
+$kingArthur->attaque($lieutenant);
+$lieutenant->attaque($kingArthur);
+dump($kingArthur->mort(), $lieutenant->mort());
+
+$kingArthur->attaque($chef);
+$chef->attaque($kingArthur);
+dump($kingArthur->mort(), $chef->mort());
+
+$kingArthur->attaque($minion);
+$minion->attaque($kingArthur);
+dump($kingArthur->mort(), $minion->mort());
+
+$kingArthur->attaque($lieutenant);
+$lieutenant->attaque($kingArthur);
+dump($kingArthur->mort(), $lieutenant->mort());
+
+
+$kingArthur->attaque($chef);
+$chef->attaque($kingArthur);
+dump($kingArthur->mort(), $chef->mort());
+
+
+// if($minion->mort()){
+//     echo ("Le Minion est KO!");
+// } else {
+//     echo ("Le Minion a survécu avec . $minion->vieBad");
+// }
+
+
+
+// if($kingArthur->mort()){
+//     echo ("Le Roi Arthur est KO!");
+// } else {
+//     echo ("Le Roi Arthur a survécu avec . $kingArthur->vie");
+// }
+
+//dump($kingArthur->mort());
 //var_dump($kingArthur);
 
 //var_dump($minion);
