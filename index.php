@@ -1,9 +1,7 @@
 <?php
 require 'vendor/autoload.php';
 
-use Cousin\Composer\test;
-
-require "Personnage.php";
+use Cousin\Composer\Personnage;
 
 $kingArthur = new Personnage("kingArthur", 200, 15, 20, true);
 $kingArthur->regenerer();

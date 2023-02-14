@@ -1,5 +1,7 @@
 <?php
 
+namespace Cousin\Composer;
+
 class Personnage
 {
     public $nom;
@@ -26,14 +28,14 @@ class Personnage
         }
     }
 
-    public function BonusArmure()
+    public function Bonus()
     {
         if (!$this->gentil) {
             return 0;
         }
-        $random = random_int(1, 4);
-        if ($random <= 2) {
-            echo $this->nom = 'Armure acquise !';
+        $random = random_int(1, 6);
+        if ($random <= 3) {
+            echo $this->nom . "Armure acquise !";
             return 20;
         } else {
             return 0;
@@ -51,8 +53,10 @@ class Personnage
             echo "T'es mort!\n";
             return;
         }
-        $cible->vie = $cible->vie - max(0, ($this->atk - $cible->Regenerer() - $cible->armure));
+        $cible->vie = $cible->vie - max(0, ($this->atk - $cible->Bonus() - $cible->armure));
         dump($cible);
+        dump($cible->armure);
+
     }
 }
 
